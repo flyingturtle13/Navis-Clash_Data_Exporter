@@ -18,7 +18,7 @@
 <img src="https://user-images.githubusercontent.com/44215479/55692242-d0694780-595a-11e9-8fd6-152e1931fdd1.png" width="500">
 </p>
 
-### Power BI Examples Using Exported Clash Data
+### Power BI Report Examples Using Exported Clash Data
 
 - #### Project Summary
 <p align="center">
