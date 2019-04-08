@@ -4,7 +4,7 @@
 ### Steps
 
 1.
-![1](https://user-images.githubusercontent.com/44215479/55692177-47521080-595a-11e9-88cd-180e5ec7c7da.png =200x)
+<img src="https://user-images.githubusercontent.com/44215479/55692177-47521080-595a-11e9-88cd-180e5ec7c7da.png" width="500">
 
 2.
 ![2](https://user-images.githubusercontent.com/44215479/55692238-cc3d2a00-595a-11e9-9a6f-496750a7f6f2.png)
