@@ -1,0 +1,27 @@
+--
+AR
+Architecture
+--
+ST
+Structural Design
+--
+DW
+Drywall
+--
+EL
+Electrical
+--
+FP
+Fire Protection
+--
+MD
+Mechanical Dry
+--
+MW
+Mechanical Wet
+--
+SC
+Structural Concrete
+--
+SS
+Structural Steel

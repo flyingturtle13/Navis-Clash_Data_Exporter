@@ -1,0 +1,14 @@
+C:\Navis API\ClashData\ClashData\obj\Debug\ClashData.csprojAssemblyReference.cache
+C:\Navis API\ClashData\ClashData\obj\Debug\ClashData.csproj.ResolveComReference.cache
+C:\Navis API\ClashData\ClashData\obj\Debug\ClashData.csproj.CoreCompileInputs.cache
+C:\Navis API\ClashData\ClashData\bin\Debug\ClashData.dll
+C:\Navis API\ClashData\ClashData\bin\Debug\ClashData.pdb
+C:\Navis API\ClashData\ClashData\bin\Debug\Autodesk.Navisworks.Api.dll
+C:\Navis API\ClashData\ClashData\bin\Debug\Autodesk.Navisworks.Automation.dll
+C:\Navis API\ClashData\ClashData\bin\Debug\Autodesk.Navisworks.Clash.dll
+C:\Navis API\ClashData\ClashData\bin\Debug\Autodesk.Navisworks.Api.xml
+C:\Navis API\ClashData\ClashData\bin\Debug\Autodesk.Navisworks.Automation.xml
+C:\Navis API\ClashData\ClashData\bin\Debug\lcclash.dll
+C:\Navis API\ClashData\ClashData\obj\Debug\ClashData.csproj.CopyComplete
+C:\Navis API\ClashData\ClashData\obj\Debug\ClashData.dll
+C:\Navis API\ClashData\ClashData\obj\Debug\ClashData.pdb
