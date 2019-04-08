@@ -21,15 +21,22 @@
 ### Power BI Examples
 
 - #### Project Summary
-<img src="https://user-images.githubusercontent.com/44215479/55692376-34d8d680-595c-11e9-85e1-5e0b6483bb83.png" width="300">
+<p align="center">
+<img src="https://user-images.githubusercontent.com/44215479/55692376-34d8d680-595c-11e9-85e1-5e0b6483bb83.png" width="700">
+</p>
 
 - #### Overall Progress
-<img src="https://user-images.githubusercontent.com/44215479/55692378-399d8a80-595c-11e9-8094-83a1bea31f76.png" width="300">
+<p align="center">
+<img src="https://user-images.githubusercontent.com/44215479/55692378-399d8a80-595c-11e9-8094-83a1bea31f76.png" width="700">
+</p>
 
 - #### Trade Clash Progress
-<img src="https://user-images.githubusercontent.com/44215479/55692379-3dc9a800-595c-11e9-82a6-e628c96e1706.png" width="300">
+<p align="center">
+<img src="https://user-images.githubusercontent.com/44215479/55692379-3dc9a800-595c-11e9-82a6-e628c96e1706.png" width="700">
+</p>
 
 - #### Clash Map
-<img src="https://user-images.githubusercontent.com/44215479/55692383-40c49880-595c-11e9-9320-287aa66c599a.png" width="300">
-
+<p align="center">
+<img src="https://user-images.githubusercontent.com/44215479/55692383-40c49880-595c-11e9-9320-287aa66c599a.png" width="700">
+</p>
 
