@@ -14,6 +14,15 @@
 
 ### Power BI Examples
 
-Project Summary
+- #### Project Summary
+![BI1-Sample](https://user-images.githubusercontent.com/44215479/55692376-34d8d680-595c-11e9-85e1-5e0b6483bb83.png)
 
+- #### Overall Progress
+![BI2-Sample](https://user-images.githubusercontent.com/44215479/55692378-399d8a80-595c-11e9-8094-83a1bea31f76.png)
+
+- #### Trade Clash Progress
+![BI3-Sample](https://user-images.githubusercontent.com/44215479/55692379-3dc9a800-595c-11e9-82a6-e628c96e1706.png)
+
+- #### Clash Map
+![BI5-Sample](https://user-images.githubusercontent.com/44215479/55692383-40c49880-595c-11e9-9320-287aa66c599a.png)
 
