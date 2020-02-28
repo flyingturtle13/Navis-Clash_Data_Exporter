@@ -1,6 +1,30 @@
-# Clash_Data_Exporter
-## Exports Navisworks Clash Detective data to be consumed by Power BI Clash Metrics Reports
+# Navisworks Clash Data Exporter & Power BI Reporting
 
+ Navisworks add-in serves to export desired Clash Detective data to be consumed in Power BI for clash metrics dynamic, visual reporting.  The Navisworks API is critical in gaining access to       
+
+## Getting Started
+Environment setup regarding application development logistics.
+
+* IDE:
+  * Visual Studio 2019
+  
+* Framework:
+  * .NET Framework 4.7.2
+
+* Language:
+  * C#
+
+* Output Type:
+  * Dynamic-link Library (DLL)
+
+* Additional Library Packages Implemented: </br>
+  * Navisworks API
+        * Autodesk.Navisworks.Api
+        * Autodesk.Navisworks.Automation
+        * Autodesk.Navisworks.Clash
+        * navisworks.gui.roamer
+  * Microsoft.Office.Interop.Excel
+  
 ### Steps
 
 #### 1.
