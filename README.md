@@ -19,10 +19,10 @@ Environment setup regarding application development logistics.
 
 * Additional Library Packages Implemented: </br>
   * Navisworks API
-        * Autodesk.Navisworks.Api
-        * Autodesk.Navisworks.Automation
-        * Autodesk.Navisworks.Clash
-        * navisworks.gui.roamer
+        - Autodesk.Navisworks.Api
+        - Autodesk.Navisworks.Automation
+        - Autodesk.Navisworks.Clash
+        - navisworks.gui.roamer
   * Microsoft.Office.Interop.Excel
   
 ### Steps
