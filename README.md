@@ -1,7 +1,6 @@
 # Navisworks Clash Data Exporter & Power BI Reporting
 
-The ultimate goal of these tools and workflow is to improve MEP BIM coordination communication with project teams.  The Navisworks add-in provides a means to automate clash metrics progress reporting,  visualize clash data, and make model data meaningful and accessible for various project stakeholders. This workflow requires Autodesk Navisworks Manage, Microsoft Power BI, and Navisworks API to access the desired Clash Detective data for exporting.  The tools and workflow are designed to have Navisworks Manage coupled with Microsoft Power BI to deliver multiple interactive visual reports in Power BI.  However, this respository focuses on the Navisworks API add-in.  The included Power BI template is only for reference and testing.   </br>
- - Tools and Workflow described here are based on AU 2019 Presentation: [Visualizing Clash Metrics in Navisworks with Power BI - Carlo Caparas](https://www.autodesk.com/autodesk-university/class/Its-All-Data-Visualizing-Clash-Metrics-Navisworks-and-Power-BI-2019)
+The ultimate goal of these tools and workflow is to improve MEP BIM coordination communication with project teams.  The Navisworks add-in provides a means to automate clash metrics progress reporting,  visualize clash data, and make model data meaningful and accessible for various project stakeholders. This workflow requires Autodesk Navisworks Manage, Microsoft Power BI, and Navisworks API to access the desired Clash Detective data for exporting.  The tools and workflow are designed to have Navisworks Manage coupled with Microsoft Power BI to deliver multiple interactive visual reports in Power BI.  However, this respository focuses on the Navisworks API add-in.  The included Power BI template is only for reference and testing.
 
 ## Getting Started
 Environment setup regarding application development logistics.
@@ -67,14 +66,18 @@ Overall workflow from Navisworks Manage to Power BI
 </p>
 
 3.  Power BI Reports</br>
-    - Projects are created using a template: **File --> Import --> Power BI template**
-    - Select exported Clash Data location generated from the add-in for Clash Data and Total Objects by Discipline
+    - Projects are created using a template: Project_Name-Clash_Matrics_Template_V2.pbit </br>
+      - Create new project using template: **File --> Import --> Power BI template**
+    - Select exported Clash Data location generated from the add-in for ClashData and TotalObjects parameters
+      <p align="center">
+          <img src="https://user-images.githubusercontent.com/44215479/75591045-98b43400-5a33-11ea-87d6-74a46c66b4a7.png" width="600">
+      </p>
     - Videos links to examples of the Power BI report functionality
-       - [Project Summary Report Example](https://youtu.be/XugV3iUmORw)
-       - [Overall Progress Report Example](https://youtu.be/sr67IXhXou0)
-       - [Discipline Clash Progress Report Example](https://youtu.be/axuEieqbO3Q)
-       - [Discipline Clash Details Report Example](https://youtu.be/DGS9jlB2jxk)
-       - [Clash Map Report Example](https://youtu.be/XgPejZVefOU)
+       > - [Project Summary Report Example](https://youtu.be/XugV3iUmORw)
+       > - [Overall Progress Report Example](https://youtu.be/sr67IXhXou0)
+       > - [Discipline Clash Progress Report Example](https://youtu.be/axuEieqbO3Q)
+       > - [Discipline Clash Details Report Example](https://youtu.be/DGS9jlB2jxk)
+       > - [Clash Map Report Example](https://youtu.be/XgPejZVefOU)
        
 ## Navisworks API Implementation
 Below highlights specific API features implemented to access and export specific Clash Detective Data
@@ -124,6 +127,7 @@ Below highlights specific API features implemented to access and export specific
 8. Open Navisworks Manage 2019 to execute and test add-in.
 
 ## References for Further Learning
+- Tools and Workflow described here are based on AU 2019 Presentation: [Visualizing Clash Metrics in Navisworks with Power BI - Carlo Caparas](https://www.autodesk.com/autodesk-university/class/Its-All-Data-Visualizing-Clash-Metrics-Navisworks-and-Power-BI-2019)
 - [Customizing Autodesk® Navisworks® 2013 with the .NET API - Simon Bee](https://www.autodesk.com/autodesk-university/class/Customizing-AutodeskR-NavisworksR-2013-NET-API-2012)
 - [Navisworks .NET API 2013 new feature – Clash 1 - Xiaodong Liang](https://adndevblog.typepad.com/aec/2012/05/navisworks-net-api-2013-new-feature-clash-1.html)
 - [Navisworks .NET API 2013 new feature – Clash 2 - Xiaodong Liang](https://adndevblog.typepad.com/aec/2012/05/navisworks-net-api-2013-new-feature-clash-2.html)
