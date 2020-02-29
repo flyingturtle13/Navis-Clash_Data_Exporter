@@ -46,7 +46,7 @@ namespace GridIntersectionCoord  //Created by Carlo Caparas, Last Updated: 12.20
                     ModelItem root = model.RootItem as ModelItem;
 
                     string dn = root.DisplayName.ToString();
-                    string[] disName = dn.Split('_', '-', '.',' ');
+                    string[] disName = dn.Split('_', '-', '.', ' ');
 
                     //determine source file type by searching model file properties
                     foreach (PropertyCategory oPC in root.PropertyCategories)
@@ -83,7 +83,7 @@ namespace GridIntersectionCoord  //Created by Carlo Caparas, Last Updated: 12.20
                                                         {
                                                             //Get object center position (X,Y,Z) by setting a 3D bounding box
                                                             ModelItem subLayer10 = subLayer9 as ModelItem;
-                                                            
+
                                                             if (subLayer10 != null)
                                                             {
                                                                 BoundingBox3D bbox = subLayer10.BoundingBox();
@@ -95,7 +95,7 @@ namespace GridIntersectionCoord  //Created by Carlo Caparas, Last Updated: 12.20
                                                                 gridXCoord.Add(gridCross.Position.X);
                                                                 gridYCoord.Add(gridCross.Position.Y);
                                                             }
-                                                            
+
                                                         }
                                                     }
                                                 }
@@ -123,7 +123,7 @@ namespace GridIntersectionCoord  //Created by Carlo Caparas, Last Updated: 12.20
                                                     gridXCoord.Add(gridCross.Position.X);
                                                     gridYCoord.Add(gridCross.Position.Y);
                                                 }
-                                                
+
                                             }
                                         }
                                     }
@@ -179,7 +179,7 @@ namespace GridIntersectionCoord  //Created by Carlo Caparas, Last Updated: 12.20
                                                                                         gridXCoord.Add(gridCross.Position.X);
                                                                                         gridYCoord.Add(gridCross.Position.Y);
                                                                                     }
-                                                                                    
+
                                                                                 }
                                                                             }
                                                                         }
@@ -208,7 +208,7 @@ namespace GridIntersectionCoord  //Created by Carlo Caparas, Last Updated: 12.20
                                                                             gridXCoord.Add(gridCross.Position.X);
                                                                             gridYCoord.Add(gridCross.Position.Y);
                                                                         }
-                                                                        
+
                                                                     }
                                                                 }
                                                             }
@@ -242,7 +242,7 @@ namespace GridIntersectionCoord  //Created by Carlo Caparas, Last Updated: 12.20
                 exception.Message.ToString();
             }
 
-            return (0,0,0,0);
+            return (0, 0, 0, 0);
         }
     }
 }

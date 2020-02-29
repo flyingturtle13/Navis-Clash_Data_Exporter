@@ -3,7 +3,7 @@
     except for ensuring x:Uid="CustomRibbonTab" has a unique ID
     -->
 <RibbonControl
-    x:Uid="AddinRibbon" xmlns="clr-namespace:Autodesk.Windows;assembly=AdWindows"
+    x:Uid="ClashData" xmlns="clr-namespace:Autodesk.Windows;assembly=AdWindows"
     xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:adwi="clr-namespace:Autodesk.Internal.Windows;assembly=AdWindows"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
@@ -11,7 +11,7 @@
     xmlns:local="clr-namespace:Autodesk.Navisworks.Gui.Roamer.AIRLook;assembly=navisworks.gui.roamer">
     <!-- END STANDARD SECTION DO NOT EDIT -->
 
-    <RibbonTab Id="Turner VDC Add-ins" KeyTip="T1">
+    <RibbonTab Id="VDC Add-ins" KeyTip="T1">
         <RibbonPanel x:Uid="RibbonPane1_1">
             <RibbonPanelSource x:Uid="RibbonPanelSource_RibbonPanel_1" KeyTip="C1" Title="Export Tools">
 

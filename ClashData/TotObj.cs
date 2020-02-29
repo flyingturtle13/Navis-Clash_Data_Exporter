@@ -20,7 +20,7 @@ using UserInput_Form;
 using ClashData;
 
 //-----For Navisworks 2019-----//
-namespace TotalObjects //Created by Carlo Caparas, Last Updated: 12.20.2018
+namespace TotalObjects //Created by Carlo Caparas
 {
     public class TotObj : AddInPlugin
     {
@@ -34,7 +34,7 @@ namespace TotalObjects //Created by Carlo Caparas, Last Updated: 12.20.2018
             string fz = UIReturn.Returnfz;
             Dictionary<string, string> modDiscipline = UIReturn.Returnpd;
 
-            if(fz == "" || modDiscipline == null)
+            if (fz == "" || modDiscipline == null)
             {
                 //MessageBox.Show("Cancelled Operation");
                 return 0;
@@ -53,7 +53,7 @@ namespace TotalObjects //Created by Carlo Caparas, Last Updated: 12.20.2018
             List<string> fileName = new List<string>();
 
             Dictionary<string, int> objCnt = new Dictionary<string, int>();
-            foreach(string disValue in modDiscipline.Values)
+            foreach (string disValue in modDiscipline.Values)
             {
                 objCnt.Add(disValue, 0);
                 //Add discipline to list by object
@@ -145,7 +145,7 @@ namespace TotalObjects //Created by Carlo Caparas, Last Updated: 12.20.2018
                 }
                 else
                 {
-                    MessageBox.Show("No models currently appended in project." + "\n" 
+                    MessageBox.Show("No models currently appended in project." + "\n"
                         + "Load models first.");
                     return 0;
                 }
@@ -174,7 +174,7 @@ namespace TotalObjects //Created by Carlo Caparas, Last Updated: 12.20.2018
                     testDate.Add(date);
                     idxDate++;
                 }
- 
+
                 //Record file name to match # of rows
                 int idxFile = 0;
                 while (idxFile < discipline.Count)
@@ -186,7 +186,7 @@ namespace TotalObjects //Created by Carlo Caparas, Last Updated: 12.20.2018
                 //Add total trade object counts to objTot List in order of discipline List
                 foreach (string name in discipline)
                 {
-                    if(objCnt.ContainsKey(name))
+                    if (objCnt.ContainsKey(name))
                     {
                         objTot.Add(objCnt[name]);
                     }

@@ -18,12 +18,12 @@ using TotalObjects;
 using UserInput_Form;
 
 //-----For Navisworks 2019-----//
-namespace ClashData  //Created by Carlo Caparas, Last Updated: 12.20.2018
+namespace ClashData  //Created by Carlo Caparas
 {
     public partial class Form1 : System.Windows.Forms.Form
     {
         string[] parameters;
-        
+
         public Form1(params string[] parametersx)
         {
             InitializeComponent();

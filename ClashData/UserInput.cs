@@ -22,7 +22,7 @@ using ClashData;
 using ClashData.Properties;
 
 //-----For Navisworks 2019-----//
-namespace UserInput_Form  //Created by Carlo Caparas, Last Updated: 12.20.2018
+namespace UserInput_Form  //Created by Carlo Caparas
 {
     public partial class UserInput : Form
     {
@@ -112,7 +112,7 @@ namespace UserInput_Form  //Created by Carlo Caparas, Last Updated: 12.20.2018
         //Cancel Button
         private void fzCancelBtn_Click(object sender, EventArgs e)
         {
-                fzInput.Clear();
+            fzInput.Clear();
         }
 
         //Remove Button

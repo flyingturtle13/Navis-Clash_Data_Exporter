@@ -21,7 +21,7 @@ using GridIntersectionCoord;
 using ClashData;
 
 //-----For Navisworks 2019-----//
-namespace ClashData //Created by Carlo Caparas, Last Updated: 12.20.2018
+namespace ClashData //Created by Carlo Caparas
 {
 
     public class ClashDataExport : AddInPlugin
@@ -148,11 +148,12 @@ namespace ClashData //Created by Carlo Caparas, Last Updated: 12.20.2018
                                 if (item.Item1 != null)
                                 {
                                     List<ModelItem> lItem1 = item.Item1.Ancestors.ToList();
-                                    
-                                    tradeName1 = ClashDiscipline_Search(lItem1, trade);
+
+                                    tradeName1 = ClashDiscipline_Search(lItem1, trade); //go to line 808 - searches for appropriate discipline by discipline code
                                 }
                                 else
                                 {
+
                                     ModelItemCollection oSelA = test.SelectionA.Selection.GetSelectedItems();
                                     List<ModelItem> lItemA = new List<ModelItem>();
 
@@ -165,7 +166,7 @@ namespace ClashData //Created by Carlo Caparas, Last Updated: 12.20.2018
                                         lItemA = oSelA.First.Ancestors.ToList();
                                     }
 
-                                    tradeName1 = ClashDiscipline_Search(lItemA, trade);
+                                    tradeName1 = ClashDiscipline_Search(lItemA, trade);//go to line 808 - searches for appropriate discipline by discipline code
                                 }
 
                                 //Checking if Item2 is null (due to resolved) and need to use Selection-B
@@ -173,10 +174,11 @@ namespace ClashData //Created by Carlo Caparas, Last Updated: 12.20.2018
                                 {
                                     List<ModelItem> lItem2 = item.Item2.Ancestors.ToList();
 
-                                    tradeName2 = ClashDiscipline_Search(lItem2, trade);
+                                    tradeName2 = ClashDiscipline_Search(lItem2, trade);//go to line 808 - searches for appropriate discipline by discipline code
                                 }
                                 else
                                 {
+
                                     ModelItemCollection oSelB = test.SelectionB.Selection.GetSelectedItems();
                                     List<ModelItem> lItemB = new List<ModelItem>();
                                     //MessageBox.Show(oSelB.First.DisplayName);
@@ -187,6 +189,7 @@ namespace ClashData //Created by Carlo Caparas, Last Updated: 12.20.2018
                                     }
                                     else
                                     {
+                                        //MessageBox.Show("flag 2B");
                                         lItemB = oSelB.First.Ancestors.ToList();
                                     }
 
@@ -198,7 +201,7 @@ namespace ClashData //Created by Carlo Caparas, Last Updated: 12.20.2018
                                 if (tradeName1 == "" || tradeName2 == "")
                                 {
                                     MessageBox.Show("Discipline Missing.  Check Project Disciplines Input File (.txt)." + "\n"
-                                        + "Clash Test: " + test.DisplayName + "\n" 
+                                        + "Clash Test: " + test.DisplayName + "\n"
                                         + "Clash Name: " + item.DisplayName + "\n"
                                         + "Discipline 1: " + tradeName1 + "\n"
                                         + "Discipline 2: " + tradeName2);
@@ -266,8 +269,7 @@ namespace ClashData //Created by Carlo Caparas, Last Updated: 12.20.2018
                             {
                                 List<ModelItem> lItem1 = rawItem.Item1.Ancestors.ToList();
 
-                                tradeName1 = ClashDiscipline_Search(lItem1, trade);
-
+                                tradeName1 = ClashDiscipline_Search(lItem1, trade);  //go to line 808 - searches for appropriate discipline by discipline code
                             }
                             else
                             {
@@ -283,7 +285,7 @@ namespace ClashData //Created by Carlo Caparas, Last Updated: 12.20.2018
                                     lItemA = oSelA.First.Ancestors.ToList();
                                 }
 
-                                tradeName1 = ClashDiscipline_Search(lItemA, trade);
+                                tradeName1 = ClashDiscipline_Search(lItemA, trade);  //go to line 808 - searches for appropriate discipline by discipline code
                             }
 
                             //Checking if Item1 is null (due to resolved) and need to use Selection-B
@@ -291,7 +293,7 @@ namespace ClashData //Created by Carlo Caparas, Last Updated: 12.20.2018
                             {
                                 List<ModelItem> lItem2 = rawItem.Item2.Ancestors.ToList();
 
-                                tradeName2 = ClashDiscipline_Search(lItem2, trade);
+                                tradeName2 = ClashDiscipline_Search(lItem2, trade);  //go to line 808 - searches for appropriate discipline by discipline code
                             }
                             else
                             {
@@ -307,7 +309,7 @@ namespace ClashData //Created by Carlo Caparas, Last Updated: 12.20.2018
                                     lItemB = oSelB.First.Ancestors.ToList();
                                 }
 
-                                tradeName2 = ClashDiscipline_Search(lItemB, trade);
+                                tradeName2 = ClashDiscipline_Search(lItemB, trade);  //go to line 808 - searches for appropriate discipline by discipline code
                             }
 
                             if (tradeName1 == "" || tradeName2 == "")
@@ -379,7 +381,6 @@ namespace ClashData //Created by Carlo Caparas, Last Updated: 12.20.2018
                     resultApproved.Add(countApproved);
                     resultResolved.Add(countResolved);
                 }
-
                 //-----------------------------------------------------------------------------------------//
                 //call grid intersection function to return min and max grid coordinate values
                 GridIntersectCoord gridValueReturn = new GridIntersectCoord();
@@ -402,37 +403,39 @@ namespace ClashData //Created by Carlo Caparas, Last Updated: 12.20.2018
 
                 //-----------------------------------------------------------------------------------------//
                 //Record level clashes occur for Clash Level
-                int clashIdx = 0; int cnt1 = 0;
+                //lvlElev = actual level elevation of level name (level)
+                int clashIdx = 0;
 
-                while (clashIdx < indiCoordZ.Count)
+                while (clashIdx < indiCoordZ.Count) //indiCoordZ = List of clash elevations
                 {
-                    int lvlIdx = 0;
-                    bool lvlAssign = false;
+                    int lvlIdx = 0; //resets level to lowest
+                    bool lvlAssign = false; //flag for if clash elevation assigned a level identity
 
                     while (lvlIdx < level.Count && lvlAssign == false)
                     {
-                        if (indiCoordZ[clashIdx] >= lvlElev[lvlIdx] && indiCoordZ[clashIdx] < lvlElev[lvlIdx + 1])
+                        //determines if clash on intermediate level
+                        if (lvlIdx != level.Count - 1 && indiCoordZ[clashIdx] >= lvlElev[lvlIdx] && indiCoordZ[clashIdx] < lvlElev[lvlIdx + 1])
                         {
                             clashLevel.Add(level[lvlIdx]);
                             lvlAssign = true;
-                            cnt1++;
                         }
+                        //determines if clash occurs highest level
                         else if (lvlIdx == level.Count - 1 && indiCoordZ[clashIdx] >= lvlElev[lvlIdx])
                         {
                             clashLevel.Add(level[lvlIdx]);
                             lvlAssign = true;
-                            cnt1++;
                         }
+                        //determines if clash occurs below lowest level
                         else if (lvlIdx == 0 && indiCoordZ[clashIdx] < lvlElev[lvlIdx])
                         {
                             clashLevel.Add("UNDERGROUND");
                             lvlAssign = true;
-                            cnt1++;
                         }
                         lvlIdx++;
                     }
                     clashIdx++;
                 }
+
                 //-----------------------------------------------------------------------------------------//
 
                 //-----------------------------------------------------------------------------------------//
@@ -773,7 +776,7 @@ namespace ClashData //Created by Carlo Caparas, Last Updated: 12.20.2018
                 }
                 modDate = clashDate[2] + clashDate[0] + clashDate[1];
 
-                
+
                 SaveFileDialog saveClashData = new SaveFileDialog();
 
                 saveClashData.Title = "Save to...";
@@ -790,7 +793,7 @@ namespace ClashData //Created by Carlo Caparas, Last Updated: 12.20.2018
                 }
 
                 xlApp.Visible = false;
-             //-----------------------------------------------------------------------------------------//
+                //-----------------------------------------------------------------------------------------//
             }
 
             catch (Exception exception)
@@ -806,14 +809,14 @@ namespace ClashData //Created by Carlo Caparas, Last Updated: 12.20.2018
         {
             string iTradeValue = "";
 
-            foreach(ModelItem lItem in itemList)
+            foreach (ModelItem lItem in itemList)
             {
                 string[] valName = lItem.DisplayName.Split('_', '-', '.', ' ');
 
                 if (valName.Last() == "nwd" || valName.Last() == "rvt" || valName.Last() == "nwc" || valName.Last() == "dwg" || valName.Last() == "ifc" ||
                     valName.Last() == "NWD" || valName.Last() == "RVT" || valName.Last() == "NWC" || valName.Last() == "DWG" || valName.Last() == "IFC")
                 {
-                    foreach(string strItem in valName)
+                    foreach (string strItem in valName)
                     {
                         if (trade.ContainsKey(strItem))
 

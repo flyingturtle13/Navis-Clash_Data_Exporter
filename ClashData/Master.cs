@@ -19,21 +19,21 @@ using Autodesk.Navisworks.Api.Plugins;
 using ClashData;
 
 //-----For Navisworks 2019-----//
-namespace StartView //Created by Carlo Caparas, Last Updated: 12.20.2018
+namespace StartView //Created by Carlo Caparas
 {
     [PluginAttribute("StartView.Start",    //Namespace.Starting class of the plugin (where the override function is)
      "CD.CAC",  // Your dev ID (It can be anything up to 7 letters I believe)
      ToolTip = "Export Clash Info to Excel",    //Plugin Tooltip content
      DisplayName = "Export Clash Data")]    //Name of the plugin button.
     [RibbonLayout("AddinRibbon.xaml")]
-    [RibbonTab("Turner VDC Add-ins")]
+    [RibbonTab("VDC Add-ins")]
     [Command("Clash_Data_Exporter", Icon = "Data-Export-16.png", LargeIcon = "Data-Export-32.png", ToolTip = "Export Clash Detective Data to Excel for Power BI")]
 
-    public class Start:CommandHandlerPlugin
+    public class Start : CommandHandlerPlugin
     {
         public override int ExecuteCommand(string name, params string[] parameters)
         {
-            switch(name)
+            switch (name)
             {
                 case "Clash_Data_Exporter":
                     Form1 form = new Form1(parameters);
@@ -42,7 +42,7 @@ namespace StartView //Created by Carlo Caparas, Last Updated: 12.20.2018
                     form.Close();
                     break;
             }
-            
+
             return 0;
         }
     }
