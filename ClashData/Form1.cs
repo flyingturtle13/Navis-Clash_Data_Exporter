@@ -14,6 +14,7 @@ using Autodesk.Navisworks.Internal.ApiImplementation;
 using Autodesk.Navisworks.Api.Automation;
 using Autodesk.Navisworks.Api.Plugins;
 using ClashData;
+using ClashTxtExport;
 using TotalObjects;
 using UserInput_Form;
 

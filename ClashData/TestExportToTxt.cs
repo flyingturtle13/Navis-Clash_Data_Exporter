@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Microsoft.Win32;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -21,7 +22,7 @@ using GridIntersectionCoord;
 using ClashData;
 
 //-----For Navisworks 2019-----//
-namespace ClashData //Created by Carlo Caparas
+namespace ClashTxtExport //Created by Carlo Caparas
 {
 
     public class TestExportToTxt : AddInPlugin
@@ -37,7 +38,7 @@ namespace ClashData //Created by Carlo Caparas
 
             if (fz == "" || trade == null)
             {
-                //MessageBox.Show("Cancelled Operation");
+                MessageBox.Show("Cancelled Operation");
                 return 0;
             }
 
@@ -150,7 +151,7 @@ namespace ClashData //Created by Carlo Caparas
                                 if (item.Item1 != null)
                                 {
                                     List<ModelItem> lItem1 = item.Item1.Ancestors.ToList();
-                                    itemAGUID.Add(item.Item1.InstanceGuid.ToString());
+                                    itemAGUID.Add(item.Item1.Ancestors.First.InstanceGuid.ToString());
 
                                     tradeName1 = ClashDiscipline_Search(lItem1, trade); //go to line 808 - searches for appropriate discipline by discipline code
                                 }
@@ -168,7 +169,7 @@ namespace ClashData //Created by Carlo Caparas
                                     else
                                     {
                                         lItemA = oSelA.First.Ancestors.ToList();
-                                        itemAGUID.Add(oSelA.First.InstanceGuid.ToString());
+                                        itemAGUID.Add(oSelA.First.Ancestors.First.InstanceGuid.ToString());
                                     }
 
                                     tradeName1 = ClashDiscipline_Search(lItemA, trade);//go to line 808 - searches for appropriate discipline by discipline code
@@ -178,7 +179,7 @@ namespace ClashData //Created by Carlo Caparas
                                 if (item.Item2 != null)
                                 {
                                     List<ModelItem> lItem2 = item.Item2.Ancestors.ToList();
-                                    itemBGUID.Add(item.Item2.InstanceGuid.ToString());
+                                    itemBGUID.Add(item.Item2.Ancestors.First.InstanceGuid.ToString());
 
                                     tradeName2 = ClashDiscipline_Search(lItem2, trade);//go to line 808 - searches for appropriate discipline by discipline code
                                 }
@@ -187,7 +188,6 @@ namespace ClashData //Created by Carlo Caparas
 
                                     ModelItemCollection oSelB = test.SelectionB.Selection.GetSelectedItems();
                                     List<ModelItem> lItemB = new List<ModelItem>();
-                                    //MessageBox.Show(oSelB.First.DisplayName);
 
                                     if (oSelB.First.HasModel == true)
                                     {
@@ -196,9 +196,8 @@ namespace ClashData //Created by Carlo Caparas
                                     }
                                     else
                                     {
-                                        //MessageBox.Show("flag 2B");
                                         lItemB = oSelB.First.Ancestors.ToList();
-                                        itemBGUID.Add(oSelB.First.InstanceGuid.ToString());
+                                        itemBGUID.Add(oSelB.First.Ancestors.First.InstanceGuid.ToString());
                                     }
 
                                     tradeName2 = ClashDiscipline_Search(lItemB, trade);
@@ -244,29 +243,6 @@ namespace ClashData //Created by Carlo Caparas
                                 }
 
                                 tradeFile.Add(document.CurrentFileName.ToString());
-                                /*
-                                //for Clash Summary
-                                if (null != item && item.Status.ToString() == "New")
-                                {
-                                    countNew = countNew + 1;
-                                }
-                                else if (null != item && item.Status.ToString() == "Active")
-                                {
-                                    countActive = countActive + 1;
-                                }
-                                else if (null != item && item.Status.ToString() == "Reviewed")
-                                {
-                                    countReviewed = countReviewed + 1;
-                                }
-                                else if (null != item && item.Status.ToString() == "Approved")
-                                {
-                                    countApproved = countApproved + 1;
-                                }
-                                else
-                                {
-                                    countResolved = countResolved + 1;
-                                }
-                                */
                             }
                         }
                         else
@@ -277,7 +253,7 @@ namespace ClashData //Created by Carlo Caparas
                             if (rawItem.Item1 != null)
                             {
                                 List<ModelItem> lItem1 = rawItem.Item1.Ancestors.ToList();
-                                itemAGUID.Add(rawItem.Item1.InstanceGuid.ToString());
+                                itemAGUID.Add(rawItem.Item1.Ancestors.First.InstanceGuid.ToString());
 
                                 tradeName1 = ClashDiscipline_Search(lItem1, trade);  //go to line 808 - searches for appropriate discipline by discipline code
                             }
@@ -294,7 +270,7 @@ namespace ClashData //Created by Carlo Caparas
                                 else
                                 {
                                     lItemA = oSelA.First.Ancestors.ToList();
-                                    itemAGUID.Add(oSelA.First.InstanceGuid.ToString());
+                                    itemAGUID.Add(oSelA.First.Ancestors.First.InstanceGuid.ToString());
                                 }
 
                                 tradeName1 = ClashDiscipline_Search(lItemA, trade);  //go to line 808 - searches for appropriate discipline by discipline code
@@ -304,7 +280,7 @@ namespace ClashData //Created by Carlo Caparas
                             if (rawItem.Item2 != null)
                             {
                                 List<ModelItem> lItem2 = rawItem.Item2.Ancestors.ToList();
-                                itemBGUID.Add(rawItem.Item2.InstanceGuid.ToString());
+                                itemBGUID.Add(rawItem.Item2.Ancestors.First.InstanceGuid.ToString());
                                 tradeName2 = ClashDiscipline_Search(lItem2, trade);  //go to line 808 - searches for appropriate discipline by discipline code
                             }
                             else
@@ -320,7 +296,7 @@ namespace ClashData //Created by Carlo Caparas
                                 else
                                 {
                                     lItemB = oSelB.First.Ancestors.ToList();
-                                    itemBGUID.Add(oSelB.First.InstanceGuid.ToString());
+                                    itemBGUID.Add(oSelB.First.Ancestors.First.InstanceGuid.ToString());
                                 }
 
                                 tradeName2 = ClashDiscipline_Search(lItemB, trade);  //go to line 808 - searches for appropriate discipline by discipline code
@@ -354,37 +330,6 @@ namespace ClashData //Created by Carlo Caparas
                             clashApprovedBy.Add(rawItem.ApprovedBy);
                             clashApproveTime.Add(rawItem.ApprovedTime.ToString());
                             clashDescription.Add(rawItem.Description);
-
-                            if (test.LastRun == null)
-                            {
-                                testDate.Add("Test Not Run");
-                            }
-                            else
-                            {
-                                tradeDate.Add(test.LastRun.Value.ToShortDateString());
-                            }
-
-                            if (rawItem.Status.ToString() == "New")
-                            {
-                                countNew = countNew + 1;
-                            }
-                            else if (rawItem.Status.ToString() == "Active")
-                            {
-                                countActive = countActive + 1;
-                            }
-                            else if (rawItem.Status.ToString() == "Reviewed")
-                            {
-                                countReviewed = countReviewed + 1;
-                            }
-                            else if (rawItem.Status.ToString() == "Approved")
-                            {
-                                countApproved = countApproved + 1;
-                            }
-                            else
-                            {
-                                countResolved = countResolved + 1;
-                            }
-
                         }
                     }
 
@@ -452,22 +397,15 @@ namespace ClashData //Created by Carlo Caparas
 
                 //-----------------------------------------------------------------------------------------//
 
-                //-----------------------------------------------------------------------------------------//
-                //Totals current Open(New + Active), Closed(Resolved + Approved), Field Coordinate(Reviewed)
-                int totOpen = resultNew.Aggregate((a, b) => a + b) + resultActive.Aggregate((a, b) => a + b);
-                int totClosed = resultResolved.Aggregate((a, b) => a + b) + resultApproved.Aggregate((a, b) => a + b);
-                int totReviewed = resultReviewed.Aggregate((a, b) => a + b);
-                int totNew = resultNew.Aggregate((a, b) => a + b);
-                int totActive = resultActive.Aggregate((a, b) => a + b);
-                int totApproved = resultApproved.Aggregate((a, b) => a + b);
-                int totResolved = resultResolved.Aggregate((a, b) => a + b);
+
+
                 //-----------------------------------------------------------------------------------------//
 
                 // Export to Txt File
 
                 List<string> header = new List<string>{"Date", "Focus Zone", "Test Name", "Discipline 1", "Discipline 2", "Clash", "Clash Level",
                     "Status", "Clash Location (X)", "Clash Location (Y)", "Clash Location (Z)", "Min X Grid Coordinate", "Min Y Grid Coordinate",
-                    "Max X Grid Coordinate", "File Path", "Assigned To", "Approved By", "Approved Time", "Description",
+                    "Max X Grid Coordinate", "Max Y Grid Coordinate", "File Path", "Assigned To", "Approved By", "Approved Time", "Description",
                     "Discipline 1 GUID", "Discipline 2 GUID"};
 
                 try
@@ -503,7 +441,6 @@ namespace ClashData //Created by Carlo Caparas
                     if (saveExportData.ShowDialog() == DialogResult.OK)
                     {
                         filename = saveExportData.FileName.ToString();
-                        string savePath = $"{Path.GetDirectoryName(filename)}\\";
 
                         //CHECKS USER HAS INPUTED A NAME FOR THE FILE
                         if (filename != "")
@@ -525,36 +462,41 @@ namespace ClashData //Created by Carlo Caparas
                                 sw.WriteLine("");
 
                                 //WRITE EACH CLASH DATA TO TXT FILE
-                                for (int i = 0; i < testDate.Count; i++)
+                                for (int i = 0; i < tradeDate.Count; i++)
                                 {
 
-                                    sw.Write(testDate[i]);
-                                    sw.Write("^ " + indiTest[i]);
+                                    sw.Write(tradeDate[i]);
                                     sw.Write("^ " + focusZone[i]);
+                                    sw.Write("^ " + indiTest[i]);
                                     sw.Write("^ " + tradeDiscipline1[i]);
                                     sw.Write("^ " + tradeDiscipline2[i]);
                                     sw.Write("^ " + tradeClash[i]);
+                                    sw.Write("^ " + clashLevel[i]);
                                     sw.Write("^ " + tradeStatus[i]);
-                                    sw.Write("^ " + tradeFile[i]);
                                     sw.Write("^ " + indiCoordX[i]);
                                     sw.Write("^ " + indiCoordY[i]);
                                     sw.Write("^ " + indiCoordZ[i]);
-                                    sw.Write("^ " + fileName[i]);
+                                    sw.Write("^ " + gridXMinCoord[i]);
+                                    sw.Write("^ " + gridYMinCoord[i]);
+                                    sw.Write("^ " + gridXMaxCoord[i]);
+                                    sw.Write("^ " + gridYMaxCoord[i]);
+                                    sw.Write("^ " + tradeFile[i]);
                                     sw.Write("^ " + clashAssignTo[i]);
                                     sw.Write("^ " + clashApprovedBy[i]);
                                     sw.Write("^ " + clashApproveTime[i]);
                                     sw.Write("^ " + clashDescription[i]);
                                     sw.Write("^ " + itemAGUID[i]);
                                     sw.Write("^ " + itemBGUID[i]);
+                                    sw.WriteLine("");
                                 }
 
-                                sw.WriteLine("");
                                 sw.Dispose();
                                 sw.Close();
                             }
 
                         }
                     }
+
                 }
                 catch (Exception exception)
                 {
@@ -568,6 +510,7 @@ namespace ClashData //Created by Carlo Caparas
 
             return 0;
         }
+
 
         //Iterates through models to find match for discipline/trade clash involvement
         public string ClashDiscipline_Search(List<ModelItem> itemList, Dictionary<string, string> trade)

@@ -20,11 +20,12 @@ using UserInput_Form;
 using GridIntersectionCoord;
 using ClashData;
 
+
 //-----For Navisworks 2019-----//
 namespace ClashData //Created by Carlo Caparas
 {
 
-    public class ClashDataExport : AddInPlugin
+    public class ClashExcelExport : AddInPlugin
     {
         public override int Execute(params string[] parameters)
         {
@@ -832,4 +833,3 @@ namespace ClashData //Created by Carlo Caparas
         }
     }
 }
-
