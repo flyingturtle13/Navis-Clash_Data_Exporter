@@ -24,7 +24,7 @@ using ClashData;
 namespace ClashData //Created by Carlo Caparas
 {
 
-    public class ClashDataExport : AddInPlugin
+    public class TestExportToTxt : AddInPlugin
     {
         public override int Execute(params string[] parameters)
         {
@@ -65,6 +65,8 @@ namespace ClashData //Created by Carlo Caparas
             List<string> clashDescription = new List<string>();
             List<string> discipline = new List<string>();
             List<string> indiTest = new List<string>();
+            List<string> itemAGUID = new List<string>();
+            List<string> itemBGUID = new List<string>();
             List<double> indiCoordX = new List<double>();
             List<double> indiCoordY = new List<double>();
             List<double> indiCoordZ = new List<double>();
@@ -148,6 +150,7 @@ namespace ClashData //Created by Carlo Caparas
                                 if (item.Item1 != null)
                                 {
                                     List<ModelItem> lItem1 = item.Item1.Ancestors.ToList();
+                                    itemAGUID.Add(item.Item1.InstanceGuid.ToString());
 
                                     tradeName1 = ClashDiscipline_Search(lItem1, trade); //go to line 808 - searches for appropriate discipline by discipline code
                                 }
@@ -160,12 +163,14 @@ namespace ClashData //Created by Carlo Caparas
                                     if (oSelA.First.HasModel == true)
                                     {
                                         lItemA.Add(oSelA.First);
+                                        itemAGUID.Add(oSelA.First.InstanceGuid.ToString());
                                     }
                                     else
                                     {
                                         lItemA = oSelA.First.Ancestors.ToList();
+                                        itemAGUID.Add(oSelA.First.InstanceGuid.ToString());
                                     }
-                                    
+
                                     tradeName1 = ClashDiscipline_Search(lItemA, trade);//go to line 808 - searches for appropriate discipline by discipline code
                                 }
 
@@ -173,6 +178,7 @@ namespace ClashData //Created by Carlo Caparas
                                 if (item.Item2 != null)
                                 {
                                     List<ModelItem> lItem2 = item.Item2.Ancestors.ToList();
+                                    itemBGUID.Add(item.Item2.InstanceGuid.ToString());
 
                                     tradeName2 = ClashDiscipline_Search(lItem2, trade);//go to line 808 - searches for appropriate discipline by discipline code
                                 }
@@ -186,11 +192,13 @@ namespace ClashData //Created by Carlo Caparas
                                     if (oSelB.First.HasModel == true)
                                     {
                                         lItemB.Add(oSelB.First);
+                                        itemBGUID.Add(oSelB.First.InstanceGuid.ToString());
                                     }
                                     else
                                     {
                                         //MessageBox.Show("flag 2B");
                                         lItemB = oSelB.First.Ancestors.ToList();
+                                        itemBGUID.Add(oSelB.First.InstanceGuid.ToString());
                                     }
 
                                     tradeName2 = ClashDiscipline_Search(lItemB, trade);
@@ -236,7 +244,7 @@ namespace ClashData //Created by Carlo Caparas
                                 }
 
                                 tradeFile.Add(document.CurrentFileName.ToString());
-
+                                /*
                                 //for Clash Summary
                                 if (null != item && item.Status.ToString() == "New")
                                 {
@@ -258,6 +266,7 @@ namespace ClashData //Created by Carlo Caparas
                                 {
                                     countResolved = countResolved + 1;
                                 }
+                                */
                             }
                         }
                         else
@@ -268,6 +277,7 @@ namespace ClashData //Created by Carlo Caparas
                             if (rawItem.Item1 != null)
                             {
                                 List<ModelItem> lItem1 = rawItem.Item1.Ancestors.ToList();
+                                itemAGUID.Add(rawItem.Item1.InstanceGuid.ToString());
 
                                 tradeName1 = ClashDiscipline_Search(lItem1, trade);  //go to line 808 - searches for appropriate discipline by discipline code
                             }
@@ -279,10 +289,12 @@ namespace ClashData //Created by Carlo Caparas
                                 if (oSelA.First.HasModel == true)
                                 {
                                     lItemA.Add(oSelA.First);
+                                    itemAGUID.Add(oSelA.First.InstanceGuid.ToString());
                                 }
                                 else
                                 {
                                     lItemA = oSelA.First.Ancestors.ToList();
+                                    itemAGUID.Add(oSelA.First.InstanceGuid.ToString());
                                 }
 
                                 tradeName1 = ClashDiscipline_Search(lItemA, trade);  //go to line 808 - searches for appropriate discipline by discipline code
@@ -292,7 +304,7 @@ namespace ClashData //Created by Carlo Caparas
                             if (rawItem.Item2 != null)
                             {
                                 List<ModelItem> lItem2 = rawItem.Item2.Ancestors.ToList();
-
+                                itemBGUID.Add(rawItem.Item2.InstanceGuid.ToString());
                                 tradeName2 = ClashDiscipline_Search(lItem2, trade);  //go to line 808 - searches for appropriate discipline by discipline code
                             }
                             else
@@ -303,10 +315,12 @@ namespace ClashData //Created by Carlo Caparas
                                 if (oSelB.First.HasModel == true)
                                 {
                                     lItemB.Add(oSelB.First);
+                                    itemBGUID.Add(oSelB.First.InstanceGuid.ToString());
                                 }
                                 else
                                 {
                                     lItemB = oSelB.First.Ancestors.ToList();
+                                    itemBGUID.Add(oSelB.First.InstanceGuid.ToString());
                                 }
 
                                 tradeName2 = ClashDiscipline_Search(lItemB, trade);  //go to line 808 - searches for appropriate discipline by discipline code
@@ -449,356 +463,107 @@ namespace ClashData //Created by Carlo Caparas
                 int totResolved = resultResolved.Aggregate((a, b) => a + b);
                 //-----------------------------------------------------------------------------------------//
 
-                //-----------------------------------------------------------------------------------------//
-                //Launch or access Excel via COM Interop:
-                Excel.Application xlApp = new Excel.Application();
-                Excel.Workbook xlWorkbook;
+                // Export to Txt File
 
-                if (xlApp == null)
+                List<string> header = new List<string>{"Date", "Focus Zone", "Test Name", "Discipline 1", "Discipline 2", "Clash", "Clash Level",
+                    "Status", "Clash Location (X)", "Clash Location (Y)", "Clash Location (Z)", "Min X Grid Coordinate", "Min Y Grid Coordinate",
+                    "Max X Grid Coordinate", "File Path", "Assigned To", "Approved By", "Approved Time", "Description",
+                    "Discipline 1 GUID", "Discipline 2 GUID"};
+
+                try
                 {
-                    MessageBox.Show("Excel is not properly installed!");
+                    //TxtIdxCounter = 0;
+                    //GETS CURRENT DATE AND FORMATS FOR DEFAULT FILE NAME
+                    string exportYr = DateTime.Now.Year.ToString();
+                    string exportMonth = DateTime.Now.Month.ToString();
+                    string exportDay = DateTime.Now.Day.ToString();
+
+                    if (exportMonth.Length == 1)
+                    {
+                        exportMonth = "0" + exportMonth;
+                    }
+
+                    if (exportDay.Length == 1)
+                    {
+                        exportDay = "0" + exportDay;
+                    }
+
+                    string exportDate = exportYr + exportMonth + exportDay;
+
+                    //CREATES NEW VARIABLE INSTANCE - ALLOWS TO OPEN WINDOWS EXPLORER SAVE FILE PROMPT
+                    string filename = "";
+                    SaveFileDialog saveExportData = new SaveFileDialog();
+
+                    //SETS FILE TYPE TO BE SAVED AS .TXT
+                    saveExportData.Title = "Save to...";
+                    saveExportData.Filter = "Text Documents | *.txt";
+                    saveExportData.FileName = exportDate + "-Clash_Data";
+
+                    //OPENS WINDOWS EXPLORER TO BEGIN LIST SAVE PROCESS
+                    if (saveExportData.ShowDialog() == DialogResult.OK)
+                    {
+                        filename = saveExportData.FileName.ToString();
+                        string savePath = $"{Path.GetDirectoryName(filename)}\\";
+
+                        //CHECKS USER HAS INPUTED A NAME FOR THE FILE
+                        if (filename != "")
+                        {
+                            using (StreamWriter sw = new StreamWriter(filename))
+                            {
+                                //WRITES COLUMN HEADERS TO TXT FILE
+                                foreach (string title in header)
+                                {
+                                    if (header.IndexOf(title) == 0)
+                                    {
+                                        sw.Write(title.ToString());
+                                    }
+                                    else
+                                    {
+                                        sw.Write("^ " + title.ToString());
+                                    }
+                                }
+                                sw.WriteLine("");
+
+                                //WRITE EACH CLASH DATA TO TXT FILE
+                                for (int i = 0; i < testDate.Count; i++)
+                                {
+
+                                    sw.Write(testDate[i]);
+                                    sw.Write("^ " + indiTest[i]);
+                                    sw.Write("^ " + focusZone[i]);
+                                    sw.Write("^ " + tradeDiscipline1[i]);
+                                    sw.Write("^ " + tradeDiscipline2[i]);
+                                    sw.Write("^ " + tradeClash[i]);
+                                    sw.Write("^ " + tradeStatus[i]);
+                                    sw.Write("^ " + tradeFile[i]);
+                                    sw.Write("^ " + indiCoordX[i]);
+                                    sw.Write("^ " + indiCoordY[i]);
+                                    sw.Write("^ " + indiCoordZ[i]);
+                                    sw.Write("^ " + fileName[i]);
+                                    sw.Write("^ " + clashAssignTo[i]);
+                                    sw.Write("^ " + clashApprovedBy[i]);
+                                    sw.Write("^ " + clashApproveTime[i]);
+                                    sw.Write("^ " + clashDescription[i]);
+                                    sw.Write("^ " + itemAGUID[i]);
+                                    sw.Write("^ " + itemBGUID[i]);
+                                }
+
+                                sw.WriteLine("");
+                                sw.Dispose();
+                                sw.Close();
+                            }
+
+                        }
+                    }
                 }
-
-                //Create New Workbook & Worksheets
-                xlWorkbook = xlApp.Workbooks.Add(Missing.Value);
-                Excel.Worksheet xlWorksheet = (Excel.Worksheet)xlWorkbook.Worksheets.get_Item(1);
-                Excel.Worksheet xlWorksheet_trade = (Excel.Worksheet)xlWorkbook.Worksheets.Add();
-                xlWorksheet.Name = "Clash Detective Summary";
-                xlWorksheet_trade.Name = "Individual Clashes";
-
-                //Label Column Headers - Summary Worksheet
-                xlWorksheet.Cells[1, 1] = "Test Date";
-                xlWorksheet.Cells[1, 2] = "Test Name";
-                xlWorksheet.Cells[1, 3] = "New";
-                xlWorksheet.Cells[1, 4] = "Active";
-                xlWorksheet.Cells[1, 5] = "Reviewed";
-                xlWorksheet.Cells[1, 6] = "Approved";
-                xlWorksheet.Cells[1, 7] = "Resolved";
-                xlWorksheet.Cells[1, 9] = "Total New";
-                xlWorksheet.Cells[1, 10] = "Total Active";
-                xlWorksheet.Cells[1, 11] = "Total Reviewed";
-                xlWorksheet.Cells[1, 12] = "Total Approved";
-                xlWorksheet.Cells[1, 13] = "Total Resolved";
-                xlWorksheet.Cells[1, 15] = "Total Open (New + Active)";
-                xlWorksheet.Cells[1, 16] = "Total Closed (Approved + Resolved)";
-                xlWorksheet.Cells[1, 17] = "Total Deferred to Field Coordination (Reviewed)";
-
-                //Label Column Headers - Worksheet By Trade Involvement
-                xlWorksheet_trade.Cells[1, 1] = "Date";
-                xlWorksheet_trade.Cells[1, 2] = "Focus Zone";
-                xlWorksheet_trade.Cells[1, 3] = "Test Name";
-                xlWorksheet_trade.Cells[1, 4] = "Discipline 1";
-                xlWorksheet_trade.Cells[1, 5] = "Discipline 2";
-                xlWorksheet_trade.Cells[1, 6] = "Clash";
-                xlWorksheet_trade.Cells[1, 7] = "Clash Level";
-                xlWorksheet_trade.Cells[1, 8] = "Status";
-                xlWorksheet_trade.Cells.Cells[1, 9] = "Clash Location (X)";
-                xlWorksheet_trade.Cells.Cells[1, 10] = "Clash Location (Y)";
-                xlWorksheet_trade.Cells.Cells[1, 11] = "Clash Location (Z)";
-                xlWorksheet_trade.Cells.Cells[1, 12] = "Min X Grid Coordinate";
-                xlWorksheet_trade.Cells.Cells[1, 13] = "Min Y Grid Coordinate";
-                xlWorksheet_trade.Cells.Cells[1, 14] = "Max X Grid Coordinate";
-                xlWorksheet_trade.Cells.Cells[1, 15] = "Max Y Grid Coordinate";
-                xlWorksheet_trade.Cells.Cells[1, 16] = "File Path";
-                xlWorksheet_trade.Cells.Cells[1, 17] = "Assigned To";
-                xlWorksheet_trade.Cells.Cells[1, 18] = "Approved By";
-                xlWorksheet_trade.Cells.Cells[1, 19] = "Approved Time";
-                xlWorksheet_trade.Cells.Cells[1, 20] = "Description";
-
-
-                //write clash statuses to excel file by Test
-                int counterSumDate = 2;
-                foreach (string name in sumTestDate)
+                catch (Exception exception)
                 {
-                    string cellName = "A" + counterSumDate.ToString();
-                    var range = xlWorksheet.get_Range(cellName, cellName);
-                    range.Value2 = name;
-                    counterSumDate++;
+                    MessageBox.Show("Error Writing in Txt File!  Original Message: " + exception.Message);
                 }
-
-                int counterTest = 2;
-                foreach (string name in testName)
-                {
-                    string cellName = "B" + counterTest.ToString();
-                    var range = xlWorksheet.get_Range(cellName, cellName);
-                    range.Value2 = name;
-                    counterTest++;
-                }
-
-                int counterNew = 2;
-                foreach (int valueNew in resultNew)
-                {
-                    string cellName = "C" + counterNew.ToString();
-                    var range = xlWorksheet.get_Range(cellName, cellName);
-                    range.Value2 = valueNew;
-                    counterNew++;
-                }
-
-                int counterActive = 2;
-                foreach (int valueActive in resultActive)
-                {
-                    string cellName = "D" + counterActive.ToString();
-                    var range = xlWorksheet.get_Range(cellName, cellName);
-                    range.Value2 = valueActive;
-                    counterActive++;
-                }
-
-                int counterReviewed = 2;
-                foreach (int valueReviewed in resultReviewed)
-                {
-                    string cellName = "E" + counterReviewed.ToString();
-                    var range = xlWorksheet.get_Range(cellName, cellName);
-                    range.Value2 = valueReviewed;
-                    counterReviewed++;
-                }
-
-                int counterApproved = 2;
-                foreach (int valueApproved in resultApproved)
-                {
-                    string cellName = "F" + counterApproved.ToString();
-                    var range = xlWorksheet.get_Range(cellName, cellName);
-                    range.Value2 = valueApproved;
-                    counterApproved++;
-                }
-
-                int counterResolved = 2;
-                foreach (int valueResolved in resultResolved)
-                {
-                    string cellName = "G" + counterResolved.ToString();
-                    var range = xlWorksheet.get_Range(cellName, cellName);
-                    range.Value2 = valueResolved;
-                    counterResolved++;
-                }
-
-                //write totals Open, Closed, Field Coordinate to Cells
-                xlWorksheet.Cells[2, 9] = totNew;
-                xlWorksheet.Cells[2, 10] = totActive;
-                xlWorksheet.Cells[2, 11] = totReviewed;
-                xlWorksheet.Cells[2, 12] = totApproved;
-                xlWorksheet.Cells[2, 13] = totResolved;
-                xlWorksheet.Cells[2, 15] = totOpen;
-                xlWorksheet.Cells[2, 16] = totClosed;
-                xlWorksheet.Cells[2, 17] = totReviewed;
-
-                //Complete Data on Worksheet (per Discipline Clash Involvement)
-                int tradeDateCount = 2;
-                foreach (string date in tradeDate)
-                {
-                    string cellName = "A" + tradeDateCount.ToString();
-                    var range = xlWorksheet_trade.get_Range(cellName, cellName);
-                    range.Value2 = date;
-                    tradeDateCount++;
-                }
-
-                int counterFz = 2;
-                foreach (string valueFz in focusZone)
-                {
-                    string cellName = "B" + counterFz.ToString();
-                    var range = xlWorksheet_trade.get_Range(cellName, cellName);
-                    range.Value2 = valueFz;
-                    counterFz++;
-                }
-
-                int testNameCount = 2;
-                foreach (string tn in indiTest)
-                {
-                    string cellName = "C" + testNameCount.ToString();
-                    var range = xlWorksheet_trade.get_Range(cellName, cellName);
-                    range.Value2 = tn;
-                    testNameCount++;
-                }
-
-                int dis1Count = 2;
-                foreach (string dis1 in tradeDiscipline1)
-                {
-                    string cellName = "D" + dis1Count.ToString();
-                    var range = xlWorksheet_trade.get_Range(cellName, cellName);
-                    range.Value2 = dis1;
-                    dis1Count++;
-                }
-
-                int dis2Count = 2;
-                foreach (string dis2 in tradeDiscipline2)
-                {
-                    string cellName = "E" + dis2Count.ToString();
-                    var range = xlWorksheet_trade.get_Range(cellName, cellName);
-                    range.Value2 = dis2;
-                    dis2Count++;
-                }
-
-                int tradeClashCount = 2;
-                foreach (string clash in tradeClash)
-                {
-                    string cellName = "F" + tradeClashCount.ToString();
-                    var range = xlWorksheet_trade.get_Range(cellName, cellName);
-                    range.Value2 = clash;
-                    tradeClashCount++;
-                }
-
-                int levelCount = 2;
-                foreach (string lvl in clashLevel)
-                {
-                    string cellName = "G" + levelCount.ToString();
-                    var range = xlWorksheet_trade.get_Range(cellName, cellName);
-                    range.Value2 = lvl;
-                    levelCount++;
-                }
-
-                int tradeStatusCount = 2;
-                foreach (string status in tradeStatus)
-                {
-                    string cellName = "H" + tradeStatusCount.ToString();
-                    var range = xlWorksheet_trade.get_Range(cellName, cellName);
-                    range.Value2 = status;
-                    tradeStatusCount++;
-                }
-
-                int coordXCount = 2;
-                foreach (double x in indiCoordX)
-                {
-                    string cellName = "I" + coordXCount.ToString();
-                    var range = xlWorksheet_trade.get_Range(cellName, cellName);
-                    range.Value2 = x;
-                    coordXCount++;
-                }
-
-                int coordYCount = 2;
-                foreach (double y in indiCoordY)
-                {
-                    string cellName = "J" + coordYCount.ToString();
-                    var range = xlWorksheet_trade.get_Range(cellName, cellName);
-                    range.Value2 = y;
-                    coordYCount++;
-                }
-
-                int coordZCount = 2;
-                foreach (double z in indiCoordZ)
-                {
-                    string cellName = "K" + coordZCount.ToString();
-                    var range = xlWorksheet_trade.get_Range(cellName, cellName);
-                    range.Value2 = z;
-                    coordZCount++;
-                }
-
-                int xMinCount = 2;
-                foreach (double xMin in gridXMinCoord)
-                {
-                    string cellName = "L" + xMinCount.ToString();
-                    var range = xlWorksheet_trade.get_Range(cellName, cellName);
-                    range.Value2 = xMin;
-                    xMinCount++;
-                }
-
-                int yMinCount = 2;
-                foreach (double yMin in gridYMinCoord)
-                {
-                    string cellName = "M" + yMinCount.ToString();
-                    var range = xlWorksheet_trade.get_Range(cellName, cellName);
-                    range.Value2 = yMin;
-                    yMinCount++;
-                }
-
-                int xMaxCount = 2;
-                foreach (double xMax in gridXMaxCoord)
-                {
-                    string cellName = "N" + xMaxCount.ToString();
-                    var range = xlWorksheet_trade.get_Range(cellName, cellName);
-                    range.Value2 = xMax;
-                    xMaxCount++;
-                }
-
-                int yMaxCount = 2;
-                foreach (double yMax in gridYMaxCoord)
-                {
-                    string cellName = "O" + yMaxCount.ToString();
-                    var range = xlWorksheet_trade.get_Range(cellName, cellName);
-                    range.Value2 = yMax;
-                    yMaxCount++;
-                }
-
-                int tradeFileCount = 2;
-                foreach (string file in tradeFile)
-                {
-                    string cellName = "P" + tradeFileCount.ToString();
-                    var range = xlWorksheet_trade.get_Range(cellName, cellName);
-                    range.Value2 = file;
-                    tradeFileCount++;
-                }
-
-                int assignToCount = 2;
-                foreach (string assign in clashAssignTo)
-                {
-                    string cellName = "Q" + assignToCount.ToString();
-                    var range = xlWorksheet_trade.get_Range(cellName, cellName);
-                    range.Value2 = assign;
-                    assignToCount++;
-                }
-
-                int approvedByCount = 2;
-                foreach (string approve in clashApprovedBy)
-                {
-                    string cellName = "R" + approvedByCount.ToString();
-                    var range = xlWorksheet_trade.get_Range(cellName, cellName);
-                    range.Value2 = approve;
-                    approvedByCount++;
-                }
-
-                int approveTimeCount = 2;
-                foreach (string time in clashApproveTime)
-                {
-                    string cellName = "S" + approveTimeCount.ToString();
-                    var range = xlWorksheet_trade.get_Range(cellName, cellName);
-                    range.Value2 = time;
-                    approveTimeCount++;
-                }
-
-                int descriptionCount = 2;
-                foreach (string description in clashDescription)
-                {
-                    string cellName = "T" + descriptionCount.ToString();
-                    var range = xlWorksheet_trade.get_Range(cellName, cellName);
-                    range.Value2 = description;
-                    descriptionCount++;
-                }
-
-                //Locate file save location
-                string[] clashDate = tradeDate[0].Split('/');
-                string modDate = "";
-
-                if (clashDate[0].Length == 1)
-                {
-                    clashDate[0] = "0" + clashDate[0];
-                }
-
-                if (clashDate[1].Length == 1)
-                {
-                    clashDate[1] = "0" + clashDate[1];
-                }
-                modDate = clashDate[2] + clashDate[0] + clashDate[1];
-
-
-                SaveFileDialog saveClashData = new SaveFileDialog();
-
-                saveClashData.Title = "Save to...";
-                saveClashData.Filter = "Excel Workbook | *.xlsx|Excel 97-2003 Workbook | *.xls";
-                saveClashData.FileName = modDate + "-Clash_Test_Data-" + focusZone[0].ToString();
-
-                if (saveClashData.ShowDialog() == DialogResult.OK)
-                {
-                    string path = saveClashData.FileName;
-                    xlWorkbook.SaveCopyAs(path);
-                    xlWorkbook.Saved = true;
-                    xlWorkbook.Close(true, Missing.Value, Missing.Value);
-                    xlApp.Quit();
-                }
-
-                xlApp.Visible = false;
-                //-----------------------------------------------------------------------------------------//
             }
-
             catch (Exception exception)
             {
-                MessageBox.Show("Error! Check if clash test(s) exist or previously run.  Original Message: " + exception.Message);
+                MessageBox.Show("Error Writing in Txt File!  Original Message: " + exception.Message);
             }
 
             return 0;

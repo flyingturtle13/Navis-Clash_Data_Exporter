@@ -31,7 +31,7 @@ namespace UserInput_Form  //Created by Carlo Caparas
         public Dictionary<string, string> Returnpd { get; set; }
 
         [STAThread]
-        static void Main()
+        static void Main() 
         {
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);

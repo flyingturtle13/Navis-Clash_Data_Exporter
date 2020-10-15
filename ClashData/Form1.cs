@@ -35,8 +35,10 @@ namespace ClashData  //Created by Carlo Caparas
             try
             {
                 this.Hide();
-                ClashDataExport testExport = new ClashDataExport();
-                testExport.Execute(parameters);
+                TestExportToTxt txtExport = new TestExportToTxt();
+                txtExport.Execute(parameters);
+                //ClashDataExport testExport = new ClashDataExport(); // for excel file export
+                //testExport.Execute(parameters);
                 this.Show();
             }
             catch (Exception g)

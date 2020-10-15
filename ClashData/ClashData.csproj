@@ -54,6 +54,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AdWindows">
+      <HintPath>D:\Program Files\Autodesk\Navisworks Manage 2019\AdWindows.dll</HintPath>
+    </Reference>
     <Reference Include="Autodesk.Navisworks.Api, Version=10.0.879.81, Culture=neutral, PublicKeyToken=d85e58fa5af9b484, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Program Files\Autodesk\Navisworks Manage 2019\Autodesk.Navisworks.Api.dll</HintPath>
@@ -73,6 +76,7 @@
       <HintPath>D:\Program Files\Autodesk\Navisworks Manage 2019\navisworks.gui.roamer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.AddIn" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -86,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GridIntersectCoord.cs" />
+    <Compile Include="TestExportToTxt.cs" />
     <Compile Include="UserInput.cs">
       <SubType>Form</SubType>
     </Compile>
