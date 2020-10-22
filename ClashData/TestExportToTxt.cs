@@ -456,7 +456,7 @@ namespace ClashTxtExport //Created by Carlo Caparas
                                     }
                                     else
                                     {
-                                        sw.Write("^ " + title.ToString());
+                                        sw.Write("^" + title.ToString());
                                     }
                                 }
                                 sw.WriteLine("");
@@ -466,27 +466,27 @@ namespace ClashTxtExport //Created by Carlo Caparas
                                 {
 
                                     sw.Write(tradeDate[i]);
-                                    sw.Write("^ " + focusZone[i]);
-                                    sw.Write("^ " + indiTest[i]);
-                                    sw.Write("^ " + tradeDiscipline1[i]);
-                                    sw.Write("^ " + tradeDiscipline2[i]);
-                                    sw.Write("^ " + tradeClash[i]);
-                                    sw.Write("^ " + clashLevel[i]);
-                                    sw.Write("^ " + tradeStatus[i]);
-                                    sw.Write("^ " + indiCoordX[i]);
-                                    sw.Write("^ " + indiCoordY[i]);
-                                    sw.Write("^ " + indiCoordZ[i]);
-                                    sw.Write("^ " + gridXMinCoord[i]);
-                                    sw.Write("^ " + gridYMinCoord[i]);
-                                    sw.Write("^ " + gridXMaxCoord[i]);
-                                    sw.Write("^ " + gridYMaxCoord[i]);
-                                    sw.Write("^ " + tradeFile[i]);
-                                    sw.Write("^ " + clashAssignTo[i]);
-                                    sw.Write("^ " + clashApprovedBy[i]);
-                                    sw.Write("^ " + clashApproveTime[i]);
-                                    sw.Write("^ " + clashDescription[i]);
-                                    sw.Write("^ " + itemAGUID[i]);
-                                    sw.Write("^ " + itemBGUID[i]);
+                                    sw.Write("^" + focusZone[i]);
+                                    sw.Write("^" + indiTest[i]);
+                                    sw.Write("^" + tradeDiscipline1[i]);
+                                    sw.Write("^" + tradeDiscipline2[i]);
+                                    sw.Write("^" + tradeClash[i]);
+                                    sw.Write("^" + clashLevel[i]);
+                                    sw.Write("^" + tradeStatus[i]);
+                                    sw.Write("^" + indiCoordX[i]);
+                                    sw.Write("^" + indiCoordY[i]);
+                                    sw.Write("^" + indiCoordZ[i]);
+                                    sw.Write("^" + gridXMinCoord[i]);
+                                    sw.Write("^" + gridYMinCoord[i]);
+                                    sw.Write("^" + gridXMaxCoord[i]);
+                                    sw.Write("^" + gridYMaxCoord[i]);
+                                    sw.Write("^" + tradeFile[i]);
+                                    sw.Write("^" + clashAssignTo[i]);
+                                    sw.Write("^" + clashApprovedBy[i]);
+                                    sw.Write("^" + clashApproveTime[i]);
+                                    sw.Write("^" + clashDescription[i]);
+                                    sw.Write("^" + itemAGUID[i]);
+                                    sw.Write("^" + itemBGUID[i]);
                                     sw.WriteLine("");
                                 }
 
