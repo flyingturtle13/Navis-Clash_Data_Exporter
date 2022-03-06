@@ -89,3 +89,17 @@ C:\Navis API\2019\ClashData\ClashData\obj\x64\Debug\ClashData.csproj.CoreCompile
 C:\Navis API\2019\ClashData\ClashData\obj\x64\Debug\ClashData.csproj.CopyComplete
 C:\Navis API\2019\ClashData\ClashData\obj\x64\Debug\ClashData.dll
 C:\Navis API\2019\ClashData\ClashData\obj\x64\Debug\ClashData.pdb
+C:\Users\carlo\Source\Repos\flyingturtle13\Navis-Clash_Data_Exporter\ClashData\bin\x64\Debug\Resources\Project_Disciplines.txt
+C:\Users\carlo\Source\Repos\flyingturtle13\Navis-Clash_Data_Exporter\ClashData\bin\x64\Debug\ClashData.dll
+C:\Users\carlo\Source\Repos\flyingturtle13\Navis-Clash_Data_Exporter\ClashData\bin\x64\Debug\ClashData.pdb
+C:\Users\carlo\Source\Repos\flyingturtle13\Navis-Clash_Data_Exporter\ClashData\obj\x64\Debug\ClashData.csprojAssemblyReference.cache
+C:\Users\carlo\Source\Repos\flyingturtle13\Navis-Clash_Data_Exporter\ClashData\obj\x64\Debug\ClashData.Form1.resources
+C:\Users\carlo\Source\Repos\flyingturtle13\Navis-Clash_Data_Exporter\ClashData\obj\x64\Debug\UserInput_Form.UserInput.resources
+C:\Users\carlo\Source\Repos\flyingturtle13\Navis-Clash_Data_Exporter\ClashData\obj\x64\Debug\ClashData.Properties.Resources.resources
+C:\Users\carlo\Source\Repos\flyingturtle13\Navis-Clash_Data_Exporter\ClashData\obj\x64\Debug\ClashData.csproj.GenerateResource.cache
+C:\Users\carlo\Source\Repos\flyingturtle13\Navis-Clash_Data_Exporter\ClashData\obj\x64\Debug\ClashData.csproj.CoreCompileInputs.cache
+C:\Users\carlo\Source\Repos\flyingturtle13\Navis-Clash_Data_Exporter\ClashData\obj\x64\Debug\ClashData.dll
+C:\Users\carlo\Source\Repos\flyingturtle13\Navis-Clash_Data_Exporter\ClashData\obj\x64\Debug\ClashData.pdb
+C:\Users\carlo\Source\Repos\flyingturtle13\Navis-Clash_Data_Exporter\ClashData\bin\x64\Debug\Images\Data-Export-16.png
+C:\Users\carlo\Source\Repos\flyingturtle13\Navis-Clash_Data_Exporter\ClashData\bin\x64\Debug\Images\Data-Export-32.png
+C:\Users\carlo\Source\Repos\flyingturtle13\Navis-Clash_Data_Exporter\ClashData\bin\x64\Debug\en-US\AddinRibbon.xaml
