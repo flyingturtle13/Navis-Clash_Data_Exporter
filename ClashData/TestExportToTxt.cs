@@ -153,7 +153,7 @@ namespace ClashTxtExport //Created by Carlo Caparas
                                     List<ModelItem> lItem1 = item.Item1.Ancestors.ToList();
                                     itemAGUID.Add(item.Item1.Ancestors.First.InstanceGuid.ToString());
 
-                                    tradeName1 = ClashDiscipline_Search(lItem1, trade); //go to line 808 - searches for appropriate discipline by discipline code
+                                    tradeName1 = ClashDiscipline_Search(lItem1, trade); //go to line 516 - searches for appropriate discipline by discipline code
                                 }
                                 else
                                 {
@@ -273,7 +273,7 @@ namespace ClashTxtExport //Created by Carlo Caparas
                                     itemAGUID.Add(oSelA.First.Ancestors.First.InstanceGuid.ToString());
                                 }
 
-                                tradeName1 = ClashDiscipline_Search(lItemA, trade);  //go to line 808 - searches for appropriate discipline by discipline code
+                                tradeName1 = ClashDiscipline_Search(lItemA, trade);  //go to line 516 - searches for appropriate discipline by discipline code
                             }
 
                             //Checking if Item1 is null (due to resolved) and need to use Selection-B

@@ -10,7 +10,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Autodesk.Navisworks.Gui.Roamer.AIRLook;assembly=navisworks.gui.roamer">
     <!-- END STANDARD SECTION DO NOT EDIT -->
-
+    
     <RibbonTab Id="VDC Add-ins" KeyTip="T1">
         <RibbonPanel x:Uid="RibbonPane1_1">
             <RibbonPanelSource x:Uid="RibbonPanelSource_RibbonPanel_1" KeyTip="C1" Title="Export Tools">
@@ -20,7 +20,8 @@
                             KeyTip="B1"
                             ShowText="True"
                             Text="Clash Data Exporter"
-                            Orientation="Vertical"/>
+                            Orientation="Vertical"
+                />
 
             </RibbonPanelSource>
         </RibbonPanel>

@@ -22,10 +22,10 @@ using ClashData;
 
 
 //-----For Navisworks 2019-----//
-namespace ClashData //Created by Carlo Caparas
+namespace ClashExcelExport //Created by Carlo Caparas
 {
 
-    public class ClashExcelExport : AddInPlugin
+    public class TestExportToExcel : AddInPlugin
     {
         public override int Execute(params string[] parameters)
         {
@@ -66,6 +66,8 @@ namespace ClashData //Created by Carlo Caparas
             List<string> clashDescription = new List<string>();
             List<string> discipline = new List<string>();
             List<string> indiTest = new List<string>();
+            List<string> itemAGUID = new List<string>();
+            List<string> itemBGUID = new List<string>();
             List<double> indiCoordX = new List<double>();
             List<double> indiCoordY = new List<double>();
             List<double> indiCoordZ = new List<double>();
@@ -192,6 +194,7 @@ namespace ClashData //Created by Carlo Caparas
                                     {
                                         //MessageBox.Show("flag 2B");
                                         lItemB = oSelB.First.Ancestors.ToList();
+                                        itemBGUID.Add(oSelB.First.InstanceGuid.ToString());
                                     }
 
                                     tradeName2 = ClashDiscipline_Search(lItemB, trade);

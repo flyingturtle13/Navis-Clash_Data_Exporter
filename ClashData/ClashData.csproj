@@ -55,17 +55,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AdWindows">
-      <HintPath>D:\Program Files\Autodesk\Navisworks Manage 2019\AdWindows.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Navisworks Manage 2020\AdWindows.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Autodesk.Navisworks.Api, Version=10.0.879.81, Culture=neutral, PublicKeyToken=d85e58fa5af9b484, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Program Files\Autodesk\Navisworks Manage 2019\Autodesk.Navisworks.Api.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Navisworks Manage 2020\Autodesk.Navisworks.Api.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Autodesk.Navisworks.Automation">
-      <HintPath>D:\Program Files\Autodesk\Navisworks Manage 2019\Autodesk.Navisworks.Automation.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Navisworks Manage 2020\Autodesk.Navisworks.Automation.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Autodesk.Navisworks.Clash">
-      <HintPath>D:\Program Files\Autodesk\Navisworks Manage 2019\Autodesk.Navisworks.Clash.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Navisworks Manage 2020\Autodesk.Navisworks.Clash.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -73,7 +77,8 @@
       <HintPath>D:\Documnts\Application Projects\Navis API\2019\ClashData\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
     <Reference Include="navisworks.gui.roamer">
-      <HintPath>D:\Program Files\Autodesk\Navisworks Manage 2019\navisworks.gui.roamer.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Navisworks Manage 2020\navisworks.gui.roamer.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.AddIn" />
@@ -113,7 +118,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="TestExport.cs" />
+    <Compile Include="TestExportToExcel.cs" />
     <Compile Include="TotObj.cs" />
     <Compile Include="Master.cs" />
     <Compile Include="Form1.cs">
@@ -137,16 +142,24 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AddinRibbon.xaml">
+    <None Include="en-US\AddinRibbon.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Resources\Project_Disciplines.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Data-Export-16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Data-Export-32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

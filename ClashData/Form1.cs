@@ -15,6 +15,7 @@ using Autodesk.Navisworks.Api.Automation;
 using Autodesk.Navisworks.Api.Plugins;
 using ClashData;
 using ClashTxtExport;
+using ClashExcelExport;
 using TotalObjects;
 using UserInput_Form;
 
@@ -38,8 +39,8 @@ namespace ClashData  //Created by Carlo Caparas
                 this.Hide();
                 TestExportToTxt txtExport = new TestExportToTxt();
                 txtExport.Execute(parameters);
-                //ClashDataExport testExport = new ClashDataExport(); // for excel file export
-                //testExport.Execute(parameters);
+                //TestExportToExcel excelExport = new TestExportToExcel(); // for excel file export
+                //excelExport.Execute(parameters);
                 this.Show();
             }
             catch (Exception g)
