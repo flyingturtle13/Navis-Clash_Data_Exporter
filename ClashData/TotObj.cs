@@ -9,7 +9,6 @@ using System.Windows;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Excel = Microsoft.Office.Interop.Excel;
-using System.Windows.Forms;
 using Autodesk.Navisworks.Api;
 using Autodesk.Navisworks.Api.DocumentParts;
 using Autodesk.Navisworks.Api.Clash;
@@ -281,13 +280,13 @@ namespace TotalObjects //Created by Carlo Caparas
                     modDate = "YYYYMMDD";
                 }
 
-                SaveFileDialog saveClashData = new SaveFileDialog();
+                System.Windows.Forms.SaveFileDialog saveClashData = new System.Windows.Forms.SaveFileDialog();
 
                 saveClashData.Title = "Save to...";
                 saveClashData.Filter = "Excel Workbook | *.xlsx|Excel 97-2003 Workbook | *.xls";
                 saveClashData.FileName = modDate + "-Total_Objects_Data-" + focusZone[0].ToString();
 
-                if (saveClashData.ShowDialog() == DialogResult.OK)
+                if (saveClashData.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     string path = saveClashData.FileName;
                     xlWorkbook.SaveCopyAs(path);

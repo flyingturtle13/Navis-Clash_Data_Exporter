@@ -37,11 +37,11 @@ namespace ClashData  //Created by Carlo Caparas
             try
             {
                 this.Hide();
-                TestExportToTxt txtExport = new TestExportToTxt();
-                txtExport.Execute(parameters);
+                FileTypeExport typeExport = new FileTypeExport(parameters);
+                typeExport.ShowDialog();
                 //TestExportToExcel excelExport = new TestExportToExcel(); // for excel file export
                 //excelExport.Execute(parameters);
-                this.Show();
+                //this.Show();
             }
             catch (Exception g)
             {

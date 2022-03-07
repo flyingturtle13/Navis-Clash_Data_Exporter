@@ -5,12 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
+using System.Windows.Forms;
 using Microsoft.Win32;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Excel = Microsoft.Office.Interop.Excel;
-using System.Windows.Forms;
 using Autodesk.Navisworks.Api;
 using Autodesk.Navisworks.Api.DocumentParts;
 using Autodesk.Navisworks.Api.Clash;
@@ -205,16 +204,16 @@ namespace ClashTxtExport //Created by Carlo Caparas
 
                                 //Prompt User when no Discipline match found
                                 //User may be missing a discipline/trade in initial input
-                                if (tradeName1 == "" || tradeName2 == "")
-                                {
-                                    MessageBox.Show("Discipline Missing.  Check Project Disciplines Input File (.txt)." + "\n"
-                                        + "Clash Test: " + test.DisplayName + "\n"
-                                        + "Clash Name: " + item.DisplayName + "\n"
-                                        + "Discipline 1: " + tradeName1 + "\n"
-                                        + "Discipline 2: " + tradeName2);
+                                //if (tradeName1 == "" || tradeName2 == "")
+                                //{
+                                //    MessageBox.Show("Discipline Missing.  Check Project Disciplines Input File (.txt)." + "\n"
+                                //        + "Clash Test: " + test.DisplayName + "\n"
+                                //        + "Clash Name: " + item.DisplayName + "\n"
+                                //        + "Discipline 1: " + tradeName1 + "\n"
+                                //        + "Discipline 2: " + tradeName2);
 
-                                    return 0;
-                                }
+                                //    return 0;
+                                //}
 
                                 //Store Individual Clash Data
                                 testDate.Add(test.LastRun.Value.ToShortDateString());
@@ -302,16 +301,16 @@ namespace ClashTxtExport //Created by Carlo Caparas
                                 tradeName2 = ClashDiscipline_Search(lItemB, trade);  //go to line 808 - searches for appropriate discipline by discipline code
                             }
 
-                            if (tradeName1 == "" || tradeName2 == "")
-                            {
-                                MessageBox.Show("Discipline Missing.  Check Project Disciplines Input File (.txt)." + "\n"
-                                    + "Clash Test: " + test.DisplayName + "\n"
-                                    + "Clash Name: " + rawItem.DisplayName + "\n"
-                                    + "Discipline 1: " + tradeName1 + "\n"
-                                    + "Discipline 2: " + tradeName2);
+                            //if (tradeName1 == "" || tradeName2 == "")
+                            //{
+                            //    MessageBox.Show("Discipline Missing.  Check Project Disciplines Input File (.txt)." + "\n"
+                            //        + "Clash Test: " + test.DisplayName + "\n"
+                            //        + "Clash Name: " + rawItem.DisplayName + "\n"
+                            //        + "Discipline 1: " + tradeName1 + "\n"
+                            //        + "Discipline 2: " + tradeName2);
 
-                                return 0;
-                            }
+                            //    return 0;
+                            //}
 
                             //write to second sheet by discipline involvement
                             testDate.Add(test.LastRun.Value.ToShortDateString());
@@ -430,7 +429,7 @@ namespace ClashTxtExport //Created by Carlo Caparas
 
                     //CREATES NEW VARIABLE INSTANCE - ALLOWS TO OPEN WINDOWS EXPLORER SAVE FILE PROMPT
                     string filename = "";
-                    SaveFileDialog saveExportData = new SaveFileDialog();
+                    System.Windows.Forms.SaveFileDialog saveExportData = new System.Windows.Forms.SaveFileDialog();
 
                     //SETS FILE TYPE TO BE SAVED AS .TXT
                     saveExportData.Title = "Save to...";
