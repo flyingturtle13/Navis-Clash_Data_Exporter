@@ -23,6 +23,7 @@ Environment setup regarding application development logistics.
     - Autodesk.Navisworks.Automation
     - Autodesk.Navisworks.Clash
     - navisworks.gui.roamer
+    - AdWindows
   * Microsoft.Office.Interop.Excel
 
 ## Application Development
